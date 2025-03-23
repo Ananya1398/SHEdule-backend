@@ -3,7 +3,6 @@ const { addUser, getUserByEmail, getAllUsers } = require('../models/userModel');
 
 const router = express.Router();
 
-// Insert user
 router.post('/add-user', async (req, res) => {
   try {
     const result = await addUser(req.body);
@@ -14,7 +13,7 @@ router.post('/add-user', async (req, res) => {
   }
 });
 
-// Fetch user by email
+
 router.get('/get-user/:email', async (req, res) => {
   try {
     const result = await getUserByEmail(req.params.email);
@@ -28,7 +27,7 @@ router.get('/get-user/:email', async (req, res) => {
   }
 });
 
-// Fetch all users
+
 router.get('/get-all-users', async (req, res) => {
   try {
     const result = await getAllUsers();
