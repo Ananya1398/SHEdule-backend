@@ -29,7 +29,7 @@ const replaceUserActivity = async (data) => {
   return result.rows[0];
 };
 
-const updateUserStatus = async (email, date, status) => {
+const updateActivityStatus = async (email, date, status) => {
   const query = `
     UPDATE public.user_activities 
     SET status = $3
@@ -41,6 +41,17 @@ const updateUserStatus = async (email, date, status) => {
   const result = await client.query(query, values);
   return result.rows[0];
 };
+
+const getActivityStatus = async (email, date) => {
+  const query = `
+    SELECT status FROM public.user_activities
+    WHERE email = $1 AND date = $2;
+  `;
+  const values = [email, date];
+  const result = await client.query(query, values);
+  return result.rows[0]?.status || null;
+};
+
 
 const getUserActivity = async (email, date) => {
   const query = `
@@ -60,4 +71,4 @@ const getAllActivitiesByUser = async (email) => {
   return result.rows;
 };
 
-module.exports = { addUserActivity, getUserActivity, getAllActivitiesByUser, replaceUserActivity, updateUserStatus };
+module.exports = { addUserActivity, getUserActivity, getAllActivitiesByUser, replaceUserActivity, updateActivityStatus, getActivityStatus };

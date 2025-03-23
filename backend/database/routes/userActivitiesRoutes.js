@@ -1,5 +1,5 @@
 const express = require('express');
-const { addUserActivity, getUserActivity, getAllActivitiesByUser, replaceUserActivity, updateUserStatus } = require('../models/userActivitiesModel');
+const { addUserActivity, getUserActivity, getAllActivitiesByUser, replaceUserActivity, updateActivityStatus, getActivityStatus } = require('../models/userActivitiesModel');
 
 const router = express.Router();
 
@@ -25,7 +25,7 @@ router.put('/replace-user-activity', async (req, res) => {
   }
 });
 
-router.put('/update-user-status', async (req, res) => {
+router.put('/update-activity-status', async (req, res) => {
   console.log('PUT request received at /update-user-status');
   try {
     const { email, date, status } = req.body;
@@ -33,13 +33,33 @@ router.put('/update-user-status', async (req, res) => {
     if (!email || !date || !status || !Array.isArray(status) || status.length !== 24) {
       return res.status(400).json({ error: 'Invalid input format' });
     }
-    const result = await updateUserStatus(email, date, status);
+    const result = await updateActivityStatus(email, date, status);
     if (!result) {
       return res.status(404).json({ error: 'User activity not found' });
     }
     res.status(200).json(result);
   } catch (error) {
     console.error('Error updating user status:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.get('/get-activity-status/:email/:date', async (req, res) => {
+  try {
+    const { email, date } = req.params;
+
+    if (!email || !date) {
+      return res.status(400).json({ error: 'Invalid input format' });
+    }
+
+    const status = await getActivityStatus(email, date);
+    if (status === null) {
+      return res.status(404).json({ error: 'No status found for this user and date' });
+    }
+
+    res.status(200).json({ status });
+  } catch (error) {
+    console.error('Error fetching user status:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
