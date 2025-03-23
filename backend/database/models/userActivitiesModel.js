@@ -15,16 +15,21 @@ const addUserActivity = async (data) => {
 };
 
 const replaceUserActivity = async (data) => {
-  const { email, date, activities } = data;
+  const { email, date, activities , period_date} = data;
+  console.log('Email:', email);
+  console.log('Date:', date);
+  console.log('Activities:', activities);
+  console.log('Period Date:', period_date);
 
     const query = `
-        UPDATE public.user_activities 
-        SET activities = $3
+        UPDATE public.user_activities
+        SET activities = $3,
+          period_date = $4
         WHERE email = $1 AND date = $2
         RETURNING *;
     `;
 
-  const values = [email, date, activities];
+  const values = [email, date, activities, period_date];
   const result = await client.query(query, values);
   return result.rows[0];
 };
