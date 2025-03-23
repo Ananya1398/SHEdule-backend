@@ -56,7 +56,7 @@ We were inspired by the challenges that women face in balancing work and health,
 
 **Backend Github Repository:** https://github.com/Ananya1398/SHEdule-backend 
 
-**Video Demo:** [Video Link]  
+**Video Demo:** https://youtu.be/Mazs7QCUXRc  
 
 **Presentation:** https://www.canva.com/design/DAGijOfi1n4/eHQ8Cs37Jqfw5Y-dMDfDVQ/edit?utm_content=DAGijOfi1n4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
