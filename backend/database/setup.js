@@ -26,6 +26,11 @@ const createTables = async () => {
                 NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
                 NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Sleep'
             ],
+            status INTEGER[24] DEFAULT ARRAY[
+              0, 0, 0, 0, 0, 0, 0, 0,
+              0, 0, 0, 0, 0, 0, 0, 0,
+              0, 0, 0, 0, 0, 0, 0, 0
+          ],
           PRIMARY KEY (email, date)
       );
     `);

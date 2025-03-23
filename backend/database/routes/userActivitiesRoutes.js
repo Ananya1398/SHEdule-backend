@@ -1,5 +1,5 @@
 const express = require('express');
-const { addUserActivity, getUserActivity, getAllActivitiesByUser } = require('../models/userActivitiesModel');
+const { addUserActivity, getUserActivity, getAllActivitiesByUser, replaceUserActivity } = require('../models/userActivitiesModel');
 
 const router = express.Router();
 
@@ -10,6 +10,17 @@ router.post('/add-user-activity', async (req, res) => {
     res.status(201).json(result);
   } catch (error) {
     console.error('Error adding user activity:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// update user activity based on ai recommendations
+router.put('/replace-user-activity', async (req, res) => {
+  try {
+    const result = await replaceUserActivity(req.body);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error('Error replacing user activity:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
