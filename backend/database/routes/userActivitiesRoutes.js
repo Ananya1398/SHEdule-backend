@@ -1,5 +1,5 @@
 const express = require('express');
-const { addUserActivity, getUserActivity, getAllActivitiesByUser, replaceUserActivity } = require('../models/userActivitiesModel');
+const { addUserActivity, getUserActivity, getAllActivitiesByUser, replaceUserActivity, updateUserStatus } = require('../models/userActivitiesModel');
 
 const router = express.Router();
 
@@ -21,6 +21,25 @@ router.put('/replace-user-activity', async (req, res) => {
     res.status(200).json(result);
   } catch (error) {
     console.error('Error replacing user activity:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.put('/update-user-status', async (req, res) => {
+  console.log('PUT request received at /update-user-status');
+  try {
+    const { email, date, status } = req.body;
+
+    if (!email || !date || !status || !Array.isArray(status) || status.length !== 24) {
+      return res.status(400).json({ error: 'Invalid input format' });
+    }
+    const result = await updateUserStatus(email, date, status);
+    if (!result) {
+      return res.status(404).json({ error: 'User activity not found' });
+    }
+    res.status(200).json(result);
+  } catch (error) {
+    console.error('Error updating user status:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
