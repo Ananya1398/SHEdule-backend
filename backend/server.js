@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const userRoutes = require('./database/routes/userRoutes');
 const userActivityRoutes = require('./database/routes/userActivitiesRoutes');
-const aiRecRoutes = require('./database/routes/aiRecRoutes');
 const scheduleRoutes = require('./routes/scheduleRoutes');
 
 const { connectDB } = require('./database/db');
@@ -15,7 +14,6 @@ app.use(express.json());
 
 app.use('/api', userRoutes);
 app.use('/api', userActivityRoutes);
-app.use('/api', aiRecRoutes);
 app.use('/api', scheduleRoutes);
 
 

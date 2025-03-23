@@ -37,24 +37,6 @@ const createTables = async () => {
     `);
     console.log('Created table: user_activities');
 
-    // Create ai_rec table with email as foreign key
-    await client.query(`
-      CREATE TABLE IF NOT EXISTS public.ai_rec (
-          id SERIAL PRIMARY KEY,
-          email VARCHAR(255) REFERENCES public.users(email) ON DELETE CASCADE,
-          date DATE NOT NULL,
-          phase VARCHAR(20) NOT NULL,
-          hormonal_profile TEXT NOT NULL,
-          mood_energy TEXT NOT NULL,
-          fun_fact TEXT NOT NULL,
-          nutrition TEXT NOT NULL,
-          exercise TEXT NOT NULL,
-          sleep TEXT NOT NULL,
-          mental_health TEXT NOT NULL
-      );
-    `);
-    console.log('Created table: ai_rec');
-
   } catch (error) {
     console.error('Error creating tables:', error);
   } finally {
