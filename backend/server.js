@@ -9,7 +9,7 @@ const { connectDB } = require('./database/db');
 
 const app = express();
 
-app.use(cors()); //CORS acts as a middleware to allow frontend-backend communication
+app.use(cors()); 
 
 app.use(express.json());
 
@@ -17,6 +17,7 @@ app.use('/api', userRoutes);
 app.use('/api', userActivityRoutes);
 app.use('/api', aiRecRoutes);
 app.use('/api', scheduleRoutes);
+
 
 app.use((err, req, res, next) => {
   console.error('Internal Server Error:', err);
@@ -27,7 +28,7 @@ const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   try {
-    await connectDB(); // Connect to the database
+    await connectDB();
     app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
     });
