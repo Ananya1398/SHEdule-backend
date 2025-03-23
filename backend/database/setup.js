@@ -31,6 +31,7 @@ const createTables = async () => {
               0, 0, 0, 0, 0, 0, 0, 0,
               0, 0, 0, 0, 0, 0, 0, 0
           ],
+          next_period_date DATE,
           PRIMARY KEY (email, date)
       );
     `);
