@@ -10,8 +10,7 @@ const scheduleTasks = async (email, date, tasks) => {
   const result = await client.query(query, [email, date]);
   let activities = result.rows[0]?.activities || new Array(24).fill(null);
 
-  // Helper function to find an available preferred slot. Preferred slots are between 6am to 10am and 7pm to 11pm.
-  // 11pm to 6am is sleep time by default
+  
   const findAvailableSlot = (preferredSlots) => {
     for (let slot of preferredSlots) {
       if (!activities[slot]) return slot;
@@ -20,7 +19,7 @@ const scheduleTasks = async (email, date, tasks) => {
     for (let i = 6; i <= 22; i++) {
       if (!activities[i]) return i;
     }
-    return -1; // No available slot
+    return -1; 
   };
 
   const PREFERRED_SLOTS = [

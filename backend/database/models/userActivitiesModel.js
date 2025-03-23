@@ -1,15 +1,15 @@
 const { client } = require('../db');
 
 const addUserActivity = async (data) => {
-  const { email, date, activities } = data;
+  const { email, date, activities,colorcode } = data;
 
   const query = `
-    INSERT INTO public.user_activities (email, date, activities)
-    VALUES ($1, $2, $3)
+    INSERT INTO public.user_activities (email, date, activities,colorcode)
+    VALUES ($1, $2, $3,$4)
     RETURNING *;
   `;
 
-  const values = [email, date, activities];
+  const values = [email, date, activities,colorcode];
   const result = await client.query(query, values);
   return result.rows[0];
 };
