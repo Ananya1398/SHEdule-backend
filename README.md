@@ -1,24 +1,6 @@
-# SHEHack-Team-1
+# SHEdule 
 
-# Shedule
-
-## Project Name  
-SHEdule  
-
-## Team Number  
-Team 1
-
-## Team Members
-- Shivani Sharma
-- Nidhi Patel
-- Ananya Asthana  
-- Bhoomika Gupta
-
----
-
-## Overview  
 SHEdule is a smart scheduling platform designed to help women balance work, health, and personal life by considering the physiological changes associated with their menstrual cycle. Unlike traditional scheduling apps that focus only on productivity, SHEdule provides balanced recommendations by suggesting activities across different categories like mental health, physical health, productivity, and leisure, and also suggesting alternate cycle-aware activities. It features a smart AI assistant that guides a user through their body's natural rhythm. 
-
 
 ### Inspiration behind your project  
 We were inspired by the challenges that women face in balancing work and health, especially when dealing with the cyclical changes of their bodies. Research shows that menstrual phases impact energy levels, physicla and emotional well-being — yet existing scheduling tools fail to address these variations. SHEdule fills this gap by providing tailored recommendations that align with the user’s cycle phase and overall well-being.  
@@ -31,8 +13,7 @@ We were inspired by the challenges that women face in balancing work and health,
 - **Health Awareness** – Provides suggestions for food, exercise, and rest based on the user’s phase.  
 
 ---
-
-### Tech Stack Used  
+## Tech Stack Used  
 **Frontend:**  
 - React.js
 - HTML
@@ -50,7 +31,6 @@ We were inspired by the challenges that women face in balancing work and health,
 - Google TTS API
 
 ---
-
 ## Submission Links  
 **Frontend and LLM Server Github Repository:** https://github.com/nidhi0805/Shedule
 
@@ -122,7 +102,8 @@ python app.py
 
 ---
 
-### **Presentation Link**  
-https://www.canva.com/design/DAGijOfi1n4/eHQ8Cs37Jqfw5Y-dMDfDVQ/edit?utm_content=DAGijOfi1n4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-
-All the images in our project are sourced from Canva, and our Eva avatar is OPENAI generated. We do not claim to own any of these images. 
+## Team Members
+- Shivani Sharma
+- Nidhi Patel
+- Ananya Asthana  
+- Bhoomika Gupta
